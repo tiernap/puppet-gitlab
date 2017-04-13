@@ -311,6 +311,7 @@ class gitlab (
   $service_provider = $::gitlab::params::service_provider,
   # gitlab specific
   $edition = 'ce',
+  $backup_keep_time = undef,
   $ci_redis = undef,
   $ci_unicorn = undef,
   $config_manage = $::gitlab::params::config_manage,
@@ -377,6 +378,7 @@ class gitlab (
   validate_re($edition, [ '^ee$', '^ce$' ])
   validate_bool($config_manage)
   validate_absolute_path($config_file)
+  if $backup_keep_time { validate_hash($backup_keep_time) }
   if $ci_redis { validate_hash($ci_redis) }
   if $ci_unicorn { validate_hash($ci_unicorn) }
   validate_string($external_url)

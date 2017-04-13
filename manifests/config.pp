@@ -5,6 +5,7 @@
 class gitlab::config {
 
   # get variables from the toplevel manifest for usage in the template
+  $backup_keep_time = $::gitlab::backup_keep_time
   $ci_redis = $::gitlab::ci_redis
   $ci_unicorn = $::gitlab::ci_unicorn
   $config_manage = $::gitlab::config_manage
